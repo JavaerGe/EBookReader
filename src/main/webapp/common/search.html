@@ -1,0 +1,15 @@
+<div class="am-g">
+  <div class="am-u-md-12 am-u-sm-centered am-margin">
+    <div class="am-input-group am-input-group-primary">
+      <form method="post" action="/book/searchBook" id="searchForm">
+        <input type="text" class="am-form-field" id="key" name="key" value="${key!""}" placeholder="寻找你想要的电子书">
+      </form>
+        <span class="am-input-group-btn">
+          <button class="am-btn am-btn-primary" id="search" type="button"><span class="am-icon-search"></span></button>
+        </span>
+        <span class="am-input-group-btn">
+          <a href="${path}/book/toUpload" class="am-btn am-btn-default"><span class="am-icon-cloud-upload"></span></a>
+        </span>
+    </div>
+  </div>
+</div>

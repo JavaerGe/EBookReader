@@ -1,0 +1,11 @@
+/* Write your styles */
+.error{
+	color: #0e90d2;
+	font-size: 90px;
+}
+.error-foot{
+	position: fixed;
+    bottom: 0;
+    font-size: 85%;
+    color: #777;
+}

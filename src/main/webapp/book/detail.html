@@ -1,0 +1,114 @@
+
+<!doctype html>
+<html class="no-js fixed-layout">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>电子书详情</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <#include "/common/css.html" />
+</head>
+<body>
+<!--[if lte IE 9]>
+<p class="browsehappy">你正在使用<strong>过时</strong>的浏览器，Amaze UI 暂不支持。 请 <a href="http://browsehappy.com/" target="_blank">升级浏览器</a>
+  以获得更好的体验！</p>
+<![endif]-->
+
+<#include "/common/header.html" />
+
+<div class="am-cf admin-main">
+  <!-- sidebar start -->
+  <#include "/common/menu.html" />
+  <!-- sidebar end -->
+
+  <!-- content start -->
+  <div class="admin-content">
+    <div class="admin-content-body">
+      <div class="am-cf am-padding am-padding-bottom-0">
+        <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">电子书</strong> / <small>详情</small></div>
+      </div>
+
+      <hr/>
+
+      <div class="am-g">
+        <div class="am-u-sm-12 am-u-md-8">
+          <div class="am-panel am-panel-default">
+            <div class="am-panel-bd">
+              <div class="am-g">
+                <div class="am-u-sm-4 am-margin-bottom">
+                  <strong>书名：</strong>
+                </div>
+                <div class="am-u-sm-8 am-margin-bottom">
+                  ${book.bookName}
+                </div>
+                <div class="am-u-sm-4 am-margin-bottom">
+                  <strong>作者：</strong>
+                </div>
+                <div class="am-u-sm-8 am-margin-bottom">
+                  ${book.userName!book.account}
+                </div>
+                <div class="am-u-sm-4 am-margin-bottom">
+                  <strong>标签：</strong>
+                </div>
+                <div class="am-u-sm-8 am-margin-bottom">
+                  ${book.tag!"  "}
+                </div>
+                <div class="am-u-sm-4 am-margin-bottom">
+                  <strong>分享：</strong>
+                </div>
+                <div class="am-u-sm-8 am-margin-bottom">
+                  <#if book.isShare==0>
+                    否
+                  <#elseif book.isShare==1>
+                    是
+                  </#if>
+                </div>
+                <div class="am-u-sm-4 am-margin-bottom">
+                  <strong>时间：</strong>
+                </div>
+                <div class="am-u-sm-8 am-margin-bottom">
+                  ${book.createTime}
+                </div>
+                <div class="am-u-sm-4 am-margin-bottom">
+                  <strong>简介：</strong>
+                </div>
+                <div class="am-u-sm-8 am-margin-bottom">
+                  <p>${book.summary!"　"}</p>
+                </div>
+                <#if flag==1>
+                <div class="am-margin am-margin-bottom">
+                  <button type="button" id="addCollect" bookId="${book.id}" class="am-btn am-btn-primary am-fl">收藏</button>
+                  <a href="${path}/book/read?bookId=${book.id}"><button type="button" class="am-btn am-btn-primary am-fr">阅读</button></a>
+                </div>
+                <#elseif flag==0>
+                <div class="am-margin am-margin-bottom">
+                  <a href="${path}/book/toModify?bookId=${book.id}"><button type="button" class="am-btn am-btn-primary am-fl">修改</button></a>
+                  <a href="${path}/book/read?bookId=${book.id}"><button type="button" class="am-btn am-btn-primary am-fr">阅读</button></a>
+                </div>
+                <#elseif flag==2>
+                <div class="am-u-sm-8 am-margin-bottom">
+                  <a href="${path}/book/read?bookId=${book.id}"><button type="button" class="am-btn am-btn-primary">阅读</button></a>
+                </div>
+                </#if>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <#include "/common/alert.html" />
+    <footer class="admin-content-footer">
+      <hr>
+      <p class="am-padding-left">© 2016 SouthwestUniversity, edu. geyunpei.</p>
+    </footer>
+
+  </div>
+  <!-- content end -->
+
+</div>
+<#include "/common/leader.html" />
+
+</body>
+</html>

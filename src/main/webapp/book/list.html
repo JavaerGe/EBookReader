@@ -1,0 +1,81 @@
+
+<!doctype html>
+<html class="no-js fixed-layout">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>搜索结果</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <#include "/common/css.html" />
+</head>
+<body>
+<!--[if lte IE 9]>
+<p class="browsehappy">你正在使用<strong>过时</strong>的浏览器，Amaze UI 暂不支持。 请 <a href="http://browsehappy.com/" target="_blank">升级浏览器</a>
+  以获得更好的体验！</p>
+<![endif]-->
+
+
+
+<#include "/common/header.html" />
+
+<div class="am-cf admin-main">
+  <!-- sidebar start -->
+  <#include "/common/menu.html" />
+  <!-- sidebar end -->
+
+  <!-- content start -->
+  <div class="admin-content">
+    <div class="admin-content-body">
+      <div class="am-cf am-padding am-padding-bottom-0">
+        <div class="am-fl"><strong class="am-text-primary am-text-lg">搜索</strong> / <small>列表</small></div>
+      </div>
+      <hr/>
+      <#include "/common/search.html" />
+      <div class="am-panel am-panel-default am-margin">
+        <div class="am-panel-bd">
+          <div class="am-g">
+          <#if (bookList?size>0)>
+            <table class="am-table">
+              <thead>
+                <tr>
+                  <th>书名</th>
+                  <th>作者</th>
+                  <th>标签</th>
+                </tr>
+              </thead>
+              <tbody>
+          <#list bookList as b>
+              <tr>
+                <td><a href="${path}/book/detail?bookId=${b.id}">${b.bookName}</a></td>
+                <td>${b.userName!b.account}</td>
+                <td>${b.tag}</td>
+              </tr>
+          </#list>
+              </tbody>
+            </table>
+          <#else>
+            <div class="am-panel-bd">
+              <div class="am-g am-text-center">
+                抱歉，没有找到相关电子书！
+              </div>
+            </div>
+          </#if>
+          </div>
+        </div>
+      </div>
+    </div>
+    <#include "/common/alert.html" />
+    <footer class="admin-content-footer">
+      <hr>
+      <p class="am-padding-left">© 2016 SouthwestUniversity, edu. geyunpei.</p>
+    </footer>
+  </div>
+  <!-- content end -->
+
+</div>
+
+<#include "/common/leader.html" />
+</body>
+</html>

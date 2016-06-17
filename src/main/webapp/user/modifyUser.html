@@ -1,0 +1,172 @@
+
+<!doctype html>
+<html class="no-js fixed-layout">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>个人资料</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <#include "/common/css.html" />
+  <style>
+    .chooseFile{
+      margin-bottom: -43px;
+    }
+    .inputFile{
+      width: 74px;
+      height: 22px;
+      opacity: 0;
+    }
+  </style>
+</head>
+<body>
+<!--[if lte IE 9]>
+<p class="browsehappy">你正在使用<strong>过时</strong>的浏览器，Amaze UI 暂不支持。 请 <a href="http://browsehappy.com/" target="_blank">升级浏览器</a>
+  以获得更好的体验！</p>
+<![endif]-->
+
+<#include "/common/header.html" />
+
+<div class="am-cf admin-main">
+  <!-- sidebar start -->
+  <#include "/common/menu.html" />
+  <!-- sidebar end -->
+
+  <!-- content start -->
+  <div class="admin-content">
+    <div class="admin-content-body">
+      <div class="am-cf am-padding am-padding-bottom-0">
+        <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">用户</strong> / <small>个人资料</small></div>
+      </div>
+
+      <hr/>
+
+      <div class="am-g">
+        <div class="am-u-sm-12 am-u-md-4 am-u-md-push-8">
+          <div class="am-panel am-panel-default">
+            <div class="am-panel-bd">
+              <div class="am-g">
+                <div class="am-u-sm-12">
+                  <img class="am-img-circle am-img-thumbnail" src="${user.logo!"/assets/i/white.jpg"}" id="logo" alt=""/>
+                  </br>
+                  <small>大小不能超过1M</small>
+                  </br>
+                  <small>支持格式：jpg、png、bmp</small>
+                </div>
+                <div class="am-u-sm-12">
+                  <form class="am-form" id="logoForm">
+                    <div class="am-form-group">
+                      <button type="button" class="am-btn am-btn-primary am-btn-xs chooseFile">选择文件</button>
+                      <input type="file" accept="image/jpg, image/bmp, image/png, image/jpeg" id="logoUpload" name="logoUpload" class="inputFile">
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="am-panel am-panel-default">
+            <div class="am-panel-bd">
+              <div class="user-info">
+                <p>等级信息</p>
+                <div class="am-progress am-progress-sm">
+                  <div class="am-progress-bar" style="width: ${expPercent}"></div>
+                </div>
+                <p class="user-info-order">当前等级：<strong>LV${user.level}</strong> <br/>当前经验：<strong>${user.experience}</strong><br/>升级剩余经验：<strong>${restExp}</strong></p>
+              </div>
+              <div class="user-info">
+                <p>VIP信息</p>
+                <div class="am-progress am-progress-sm">
+                  <div class="am-progress-bar am-progress-bar-success" style="width: VIPPercent"></div>
+                </div>
+                <p class="user-info-order">当前等级：<strong>LV${user.VIP}</strong></p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="am-u-sm-12 am-u-md-8 am-u-md-pull-4">
+          <div class="am-panel am-panel-default">
+            <div class="am-panel-bd">
+              <div class="am-g">
+                <form class="am-form am-form-horizontal" action="modifyImf" method="post" id="imf">
+                  <div class="am-form-group">
+                    <label for="userName" class="am-u-sm-4 am-form-label">昵称：</label>
+                    <div class="am-u-sm-8">
+                      <input type="text" id="userName" name="userName" value="${user.userName!""}" minlength="4" maxlength="12" data-validation-message="昵称为4~12位字符" placeholder="昵称">
+                    </div>
+                  </div>
+
+                  <div class="am-form-group">
+                    <label for="email" class="am-u-sm-4 am-form-label">邮箱：</label>
+                    <div class="am-u-sm-8">
+                      <input type="text" id="email" name="email" value="${user.email!""}" placeholder="邮箱">
+                    </div>
+                  </div>
+
+                  <div class="am-form-group">
+                    <label for="phone" class="am-u-sm-4 am-form-label">手机：</label>
+                    <div class="am-u-sm-8">
+                      <input type="text" id="phone" name="phone" value="${user.phone!""}" placeholder="手机">
+                    </div>
+                  </div>
+
+                  <div class="am-form-group">
+                    <label for="QQ" class="am-u-sm-4 am-form-label">QQ：</label>
+                    <div class="am-u-sm-8">
+                      <input type="text" id="QQ" name="QQ" value="${user.QQ!""}" maxlength="12" minlength="5" placeholder="QQ">
+                    </div>
+                  </div>
+
+                  <div class="am-form-group">
+                    <label for="textNumber" class="am-u-sm-4 am-form-label">每页字数：</label>
+                    <div class="am-u-sm-8">
+                      <input type="number" id="textNumber" name="textNumber" value="${user.textNumber!""}" placeholder="2000~9999" step="1000" min="2000" max="9999" minlength="4" maxlength="4">
+                    </div>
+                  </div>
+
+                  <div class="am-form-group">
+                    <label for="summary" class="am-u-sm-4 am-form-label">简介：</label>
+                    <div class="am-u-sm-8">
+                      <textarea class="" rows="5" id="summary" name="summary" placeholder="个人简介">${user.summary!""}</textarea>
+                    </div>
+                  </div>
+                  <#if flag??>
+                    <div class="am-alert am-alert-danger am-margin" id="imfAlert" data-am-alert>
+                      ${message}
+                    </div>
+                  </#if>
+                  <div class="am-form-group">
+                    <div class="am-u-sm-8 am-u-sm-push-4 am-margin-bottom">
+                      <button type="submit" class="am-btn am-btn-primary">保存修改</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="am-modal am-modal-loading am-modal-no-btn" tabindex="-1" id="uploading">
+      <div class="am-modal-dialog">
+        <div class="am-modal-hd">正在上传...</div>
+        <div class="am-modal-bd">
+          <span class="am-icon-spinner am-icon-spin"></span>
+        </div>
+      </div>
+    </div>
+    <#include "/common/alert.html" />
+    
+    <footer class="admin-content-footer">
+      <hr>
+      <p class="am-padding-left">© 2016 SouthwestUniversity, edu. geyunpei.</p>
+    </footer>
+
+  </div>
+  <!-- content end -->
+
+</div>
+
+<#include "/common/leader.html" />
+</body>
+</html>

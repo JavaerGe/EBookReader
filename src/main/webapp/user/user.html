@@ -1,0 +1,136 @@
+
+<!doctype html>
+<html class="no-js fixed-layout">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>个人资料</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <#include "/common/css.html" />
+</head>
+<body>
+<!--[if lte IE 9]>
+<p class="browsehappy">你正在使用<strong>过时</strong>的浏览器，Amaze UI 暂不支持。 请 <a href="http://browsehappy.com/" target="_blank">升级浏览器</a>
+  以获得更好的体验！</p>
+<![endif]-->
+
+<#include "/common/header.html" />
+
+<div class="am-cf admin-main">
+  <!-- sidebar start -->
+  <#include "/common/menu.html" />
+  <!-- sidebar end -->
+
+  <!-- content start -->
+  <div class="admin-content">
+    <div class="admin-content-body">
+      <div class="am-cf am-padding am-padding-bottom-0">
+        <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">用户</strong> / <small>个人资料</small></div>
+      </div>
+
+      <hr/>
+
+      <div class="am-g">
+        <div class="am-u-sm-12 am-u-md-4 am-u-md-push-8">
+          <div class="am-panel am-panel-default">
+            <div class="am-panel-bd">
+              <div class="am-g">
+                <div class="am-u-md-12">
+                  <img class="am-img-circle am-img-thumbnail" src="${user.logo!"/assets/i/white.jpg"}" alt=""/>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="am-panel am-panel-default">
+            <div class="am-panel-bd">
+              <div class="user-info">
+                <p>等级信息</p>
+                <div class="am-progress am-progress-sm">
+                  <div class="am-progress-bar" style="width: ${expPercent}"></div>
+                </div>
+                <p class="user-info-order">当前等级：<strong>LV${user.level}</strong> <br/>当前经验：<strong>${user.experience}</strong><br/>升级剩余经验：<strong>${restExp}</strong></p>
+              </div>
+              <div class="user-info">
+                <p>VIP信息</p>
+                <div class="am-progress am-progress-sm">
+                  <div class="am-progress-bar am-progress-bar-success" style="width: VIPPercent"></div>
+                </div>
+                <p class="user-info-order">当前等级：<strong>LV${user.VIP}</strong></p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="am-u-sm-12 am-u-md-8 am-u-md-pull-4">
+          <div class="am-panel am-panel-default">
+            <div class="am-panel-bd">
+              <div class="am-g">
+                <div class="am-u-sm-4 am-margin-bottom">
+                  <strong>帐号：</strong>
+                </div>
+                <div class="am-u-sm-8 am-margin-bottom">
+                  ${user.account}
+                </div>
+                <div class="am-u-sm-4 am-margin-bottom">
+                  <strong>昵称：</strong>
+                </div>
+                <div class="am-u-sm-8 am-margin-bottom">
+                  ${user.userName!"　"}
+                </div>
+                <div class="am-u-sm-4 am-margin-bottom">
+                  <strong>邮箱：</strong>
+                </div>
+                <div class="am-u-sm-8 am-margin-bottom">
+                  ${user.email!"　"}
+                </div>
+                <div class="am-u-sm-4 am-margin-bottom">
+                  <strong>手机：</strong>
+                </div>
+                <div class="am-u-sm-8 am-margin-bottom">
+                  ${user.phone!"　"}
+                </div>
+                <div class="am-u-sm-4 am-margin-bottom">
+                  <strong>QQ：</strong>
+                </div>
+                <div class="am-u-sm-8 am-margin-bottom">
+                  ${user.QQ!"　"}
+                </div>
+                <div class="am-u-sm-4 am-margin-bottom">
+                  <strong>简介：</strong>
+                </div>
+                <div class="am-u-sm-8 am-margin-bottom">
+                  <p>${user.summary!"　"}</p>
+                </div>
+                <div class="am-u-sm-4 am-margin-bottom">
+                  <strong>每页字数：</strong>
+                </div>
+                <div class="am-u-sm-8 am-margin-bottom">
+                  ${user.textNumber}
+                </div>
+                <div class="am-u-sm-8 am-margin-bottom">
+                  <a href="${path}/user/toModifyImf"><button type="button" class="am-btn am-btn-primary">修改资料</button></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="admin-content-footer">
+      <hr>
+      <p class="am-padding-left">© 2016 SouthwestUniversity, edu. geyunpei.</p>
+    </footer>
+
+  </div>
+  <!-- content end -->
+
+</div>
+<#include "/common/leader.html" />
+
+</body>
+</html>

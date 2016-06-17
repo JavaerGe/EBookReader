@@ -1,0 +1,72 @@
+
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>登录</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <link rel="alternate icon" type="image/png" href="/assets/i/reader.png">
+  <link rel="stylesheet" href="/assets/css/amazeui.min.css"/>
+  <style>
+    .header {
+      text-align: center;
+    }
+    .header h1 {
+      font-size: 200%;
+      color: #333;
+      margin-top: 30px;
+    }
+    .header p {
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+<header class="am-topbar am-topbar-inverse admin-header">
+  <div class="am-topbar-brand">
+    <img src="/assets/i/reader.png" width="40px" height="40px">
+    <strong>电子书阅读器</strong>
+  </div>
+</header>
+<div class="header">
+  <div class="am-g">
+    <!-- <h1>登录</h1> -->
+    <img height="50px" width="50px" style="margin-top:10%" src="/assets/i/reader.png">
+    <p>欢迎使用电子书阅读器<br/>
+    尽情享受阅读生活吧！</p>
+  </div>
+  <hr />
+</div>
+<div class="am-g">
+  <div class="am-u-lg-6 am-u-md-8 am-u-sm-centered">
+    <form action="/login" method="post" class="am-form" id="loginForm">
+      <div class="am-form-group">
+        <label for="email">帐号:</label>
+        <input type="text" name="account" id="login-account" value="" data-validation-message="请输入用户名！" required/>
+      </div>
+      <div class="am-form-group">
+        <label for="password">密码:</label>
+        <input type="password" name="password" id="login-password" value="" minlength="6" maxlength="15" data-validation-message="密码只能6~15位！" required/>
+      </div>
+      <#if flag??>
+        <div class="am-alert am-alert-danger" style="" id="login-alert" data-am-alert>
+          ${message}
+        </div>
+      </#if>
+      <br />
+      <div class="am-cf">
+        <input type="submit" value="登 录" class="am-btn am-btn-primary am-btn-sm am-fl">
+        <a href="${path}/toRegister"><input type="button" id="register" name="register" value="没有帐号? " class="am-btn am-btn-default am-btn-sm am-fr"></a>
+      </div>
+    </form>
+    <hr>
+    <p>© 2016 SouthwestUniversity, edu. geyunpei.</p>
+  </div>
+</div>
+</body>
+<#include "/common/js.html" />
+</html>

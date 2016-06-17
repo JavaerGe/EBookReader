@@ -1,0 +1,102 @@
+
+<!doctype html>
+<html class="no-js fixed-layout">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>阅读</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <#include "/common/css.html" />
+
+  <style>
+    .read{
+      height:100%;
+      overflow-y:auto 
+    }
+    .content{
+      height: 100%
+    }
+    .pre {
+      position: fixed;
+      z-index: 10;
+      left: 10px;
+      bottom: 50%;
+      background-color: rgba(0,0,0,.075);
+    }
+    .next {
+      position: fixed;
+      z-index: 10;
+      right: 10px;
+      bottom: 50%;
+      background-color: rgba(0,0,0,.075);
+    }
+    .am-icon-btn{
+      color: #999;
+      background-color: rgba(0,0,0,.075);
+    }
+    .add{
+      position: fixed;
+      z-index: 10;
+      bottom: 30px;
+      left: 20px;
+    }
+  </style>
+</head>
+<body>
+<!--[if lte IE 9]>
+<p class="browsehappy">你正在使用<strong>过时</strong>的浏览器，Amaze UI 暂不支持。 请 <a href="http://browsehappy.com/" target="_blank">升级浏览器</a>
+  以获得更好的体验！</p>
+<![endif]-->
+
+<#include "/common/header.html" />
+
+<div class="am-cf admin-main">
+  <!-- sidebar start -->
+  <#include "/common/menu.html" />
+  <!-- sidebar end -->
+
+  <!-- content start -->
+  <div class="admin-content">
+    <#if !book.isStart>
+    <a href="${path}/book/read?bookId=${book.bookId}&start=${book.start-1}" class="am-icon-btn am-icon-arrow-left am-active pre"></a>
+    </#if>
+    <#if !book.isEnd>
+    <a href="${path}/book/read?bookId=${book.bookId}&start=${book.start+1}" class="am-icon-btn am-icon-arrow-right am-active next"></a>
+    </#if>
+    <#if book.haveBookmark>
+    <a id="delBookmark" bookmarkId="${book.bookmarkId!""}" class="am-icon-btn am-icon-star am-active add"></a>
+    <a id="addBookmark" bookId="${book.bookId}" start="${book.start}" textNumber="${user.textNumber}" class="am-icon-btn am-icon-star-o am-active add" style="display:none"></a>
+    <#else>
+    <a id="delBookmark" bookmarkId="${book.bookmarkId!""}" class="am-icon-btn am-icon-star am-active add" style="display:none"></a>
+    <a id="addBookmark" bookId="${book.bookId}" start="${book.start}" textNumber="${user.textNumber}" class="am-icon-btn am-icon-star-o am-active add"></a>
+    </#if>
+    <!-- <div class="admin-content-body content"> -->
+      <!-- <div class="am-panel am-panel-default content">
+        <div class="am-panel-bd content"> -->
+          <!-- <div class="admin-content-body content read" id="text"> -->
+          <div class="admin-content-body">
+            <p class="am-margin">${book.content}</p>
+          </div>
+ <!--        </div>
+      </div> -->
+<!--       <div class="am-g">
+        
+      </div>
+    </div> -->
+
+    <footer class="admin-content-footer">
+      <hr>
+      <p class="am-padding-left">© 2016 SouthwestUniversity, edu. geyunpei.</p>
+    </footer>
+  </div>
+  <!-- content end -->
+
+</div>
+
+<#include "/common/alert.html" />
+
+<#include "/common/leader.html" />
+</body>
+</html>
